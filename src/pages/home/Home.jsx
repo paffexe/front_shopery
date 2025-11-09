@@ -4,9 +4,9 @@ import Cars from "./Cars";
 
 const Home = () => {
   return (
-    <div className="container h-[200vh]">
-       <Hero />
-      <Cars/> 
+    <div className="container ">
+      <Hero />
+      <Cars />
     </div>
   );
 };
