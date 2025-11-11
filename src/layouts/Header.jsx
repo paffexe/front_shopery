@@ -5,6 +5,9 @@ import Cancel from "../assets/icons/Cancel";
 import Moon from "../assets/icons/Moon";
 import LoginB from "./ui/Buttons/LoginB";
 import DropdownMenu from "./ui/Dropdown/Dropdown";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
+import Button from "./ui/Buttons/Button";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,6 +20,18 @@ const Header = () => {
 
   const closeMenu = () => {
     setIsMenuOpen(false);
+  };
+
+  const token = Cookies.get("token");
+  const navigate = useNavigate();
+
+  if (!token) {
+    return <Navigate to={"/"} replace />;
+  }
+
+  const logOut = () => {
+    Cookies.remove("token");
+    navigate("/");
   };
 
   return (
@@ -34,7 +49,15 @@ const Header = () => {
         <div className="hidden lg:flex items-center gap-6">
           <h3 className="font-semibold text-[18px]">+1 855 420 0000</h3>
           <Moon />
-          <LoginB widthClass={"w-[142px]"} />
+          <Link to={"/"}>
+            <LoginB widthClass={"w-[142px]"} />
+          </Link>
+          <Button
+            foo={logOut}
+            widthClass={"w-[120px]"}
+            // className="bg-red-400 active:bg-blue-400 text-black"
+            title={"Log out"}
+          />
         </div>
 
         <div className="flex lg:hidden items-center gap-4">

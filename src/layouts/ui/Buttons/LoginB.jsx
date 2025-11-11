@@ -1,9 +1,10 @@
 import React from "react";
 
-const LoginB = ({ widthClass }) => {
+const LoginB = ({ widthClass, typeProps }) => {
   return (
-    <div
-      className={`bg-[#299764] text-white py-4.5 px-7.5 rounded-[100px] flex items-center gap-2  ${widthClass}`}
+    <button
+      className={`bg-[#299764] text-white py-4.5 px-7.5 rounded-[100px] flex items-center gap-2 cursor-pointer ${widthClass}`}
+      type={typeProps}
     >
       Login
       <svg
@@ -22,7 +23,7 @@ const LoginB = ({ widthClass }) => {
           fill="white"
         />
       </svg>
-    </div>
+    </button>
   );
 };
 
